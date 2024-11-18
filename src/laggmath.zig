@@ -1,7 +1,8 @@
 const std = @import("std");
 
 pub const Vectors = struct {
-    usingnamespace @import("vectors/2D.zig");
+    pub const Vec2 = @import("vectors/2D.zig").Vec2;
+    pub const Math2D = @import("vectors/2D.zig").Math2D;
 };
 
 pub const seeding = @import("random/seeding.zig");

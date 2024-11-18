@@ -1,25 +1,17 @@
 const std = @import("std");
+
 pub const Vectors = struct {
-    usingnamespace @import("vectors/Vec2.zig");
+    usingnamespace @import("vectors/2D.zig");
 };
 
 pub const seeding = @import("random/seeding.zig");
 
-// test "Optimized Divide by Zero" {
-//     @setFloatMode(.optimized);
-//     @setRuntimeSafety(false);
-//     // Arrange
-//     const k0: f32 = 0;
-//     const k1: f32 = 123;
-//     const k2: f32 = -123;
+test "Vectors" {
+    const x: f32 = @bitCast(seeding.seed_32());
+    const y: f32 = @bitCast(seeding.seed_32());
+    const v0: @Vector(2, f32) = @Vector(2, f32){ x, y };
+    const v1: Vectors.Vec2 = Vectors.Vec2{ x, y };
 
-//     // Act
-//     const kd0: f32 = k0 / 0;
-//     const kd1: f32 = k1 / 0;
-//     const kd2: f32 = k2 / 0;
-
-//     // Assert
-//     std.debug.print("{d} / 0 = {d} (0x{x})\n", .{ k0, kd0, @as(u32, @bitCast(kd0)) });
-//     std.debug.print("{d} / 0 = {d} (0x{x})\n", .{ k1, kd1, @as(u32, @bitCast(kd1)) });
-//     std.debug.print("{d} / 0 = {d} (0x{x})\n", .{ k2, kd2, @as(u32, @bitCast(kd2)) });
-// }
+    try std.testing.expectEqual(v0[0], v1[0]);
+    try std.testing.expectEqual(v0[1], v1[1]);
+}

@@ -38,7 +38,7 @@ pub fn build(b: *std.Build) void {
     const run_unit_tests = b.addRunArtifact(unit_tests);
 
     const vec2_tests = b.addTest(.{
-        .root_source_file = b.path("src/vectors/Vec2.zig"),
+        .root_source_file = b.path("src/vectors/2D.zig"),
         .target = target,
         .optimize = optimize,
     });
